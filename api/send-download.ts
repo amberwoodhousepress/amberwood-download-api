@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any) {
 
   try {
     await resend.emails.send({
-      from: "Amberwood House Press <hello@amberwoodhousepress.com>",
+      from: "Amberwood House Press <dream@amberwoodhousepress.com>",
       to: email,
       subject: "Your Free Activity Pack 🌿",
       html: `
