@@ -17,7 +17,9 @@ export default async function handler(req: any, res: any) {
     await resend.emails.send({
       from: "Amberwood House Press <dream@amberwoodhousepress.com>",
       to: email,
+      subject: "Your Activity Pack Is Ready",
       template_id: "5c8d9c8a-bb98-4f41-917b-bb420ffcec0e",
+      text: "Your activity pack is ready.",
     });
 
     return res.status(200).json({ success: true });
