@@ -24,8 +24,10 @@ export default async function handler(
   from: "Amberwood House Press <onboarding@resend.dev>",
   to: "jaylenesantiago24@gmail.com",
   subject: "Your Activity Pack Is Ready",
-  template: "free-download-email"
+  template: "free-download-email",
+  html: "<!-- fallback -->"
 });
+
 
 
     return res.status(200).json({ success: true });
