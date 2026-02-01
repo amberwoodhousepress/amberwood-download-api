@@ -24,10 +24,10 @@ export default async function handler(
   from: "Amberwood House Press <onboarding@resend.dev>",
   to: "jaylenesantiago24@gmail.com",
   subject: "Your Activity Pack Is Ready",
-  template: {
-    name: "free-download-email"
-  }
+  template_id: "5c8d9c8a-bb98-4f4f-917b-bb420ffcec0e",
+  html: "<!-- required by sdk -->"
 });
+
 
  return res.status(200).json({ success: true });
   } catch (error) {
