@@ -1,3 +1,6 @@
+export default async function handler(req: any, res: any) {
+  console.log("API HIT", req.method, req.body);
+
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
