@@ -7,11 +7,16 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const email =
-    req.body?.email ||
-    req.body?.Email ||
-    req.body?.data?.email ||
-    req.body?.data?.Email;
+console.log("Incoming body:", JSON.stringify(req.body, null, 2));
+
+const email =
+  req.body?.email ??
+  req.body?.Email ??
+  req.body?.data?.email ??
+  req.body?.data?.Email ??
+  req.body?.data?.fields?.email ??
+  req.body?.data?.fields?.Email;
+
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
