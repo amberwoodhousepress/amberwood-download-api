@@ -24,11 +24,12 @@ const email =
 
   try {
     await resend.emails.send({
-      from: "Amberwood House Press <dream@amberwoodhousepress.com>",
-      to: email,
-      subject: "✨ Your Activity Pack is Ready ✨",
-      template_id: "free-download-email",
-    });
+  from: "Amberwood House Press <dream@amberwoodhousepress.com>",
+  to: email,
+  subject: "✨ Your Activity Pack Is Ready ✨",
+  template_id: "5c8d9c8a-bb98-4f4f-917b-bb420ffcec0e",
+});
+
 
     return res.status(200).json({ success: true });
   } catch (error) {
