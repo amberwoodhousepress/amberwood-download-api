@@ -21,11 +21,12 @@ export default async function handler(
 
   try {
     await resend.emails.send({
-      from: "Amberwood House Press <onboarding@resend.dev>",
-      to: email,
-      subject: "Your Activity Pack Is Ready",
-      template_id: "5c8d9c8a-bb98-4f4f-917b-bb420ffcec0e"
-    });
+  from: "Amberwood House Press <onboarding@resend.dev>",
+  to: "jaylenesantiago24@gmail.com",
+  subject: "Your Activity Pack Is Ready",
+  template: "free-download-email"
+});
+
 
     return res.status(200).json({ success: true });
   } catch (error) {
