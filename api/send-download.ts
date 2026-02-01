@@ -21,7 +21,7 @@ export default async function handler(
 
   try {
     await resend.emails.send({
-  from: "Amberwood House Press <onboarding@resend.dev>",
+  from: "Amberwood House Press <dream@amberwoodhousepress.com>",
   to: "jaylenesantiago24@gmail.com",
   subject: "Your Activity Pack Is Ready",
   template_id: "5c8d9c8a-bb98-4f4f-917b-bb420ffcec0e",
