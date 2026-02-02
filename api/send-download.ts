@@ -35,7 +35,6 @@ const EMAIL_HTML = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E
                       <tbody>
                         <tr>
                           <td>
-                            <p><strong>Hello,</strong></p>
                             <p>
                               We’re so happy you’re here 🤍<br />
                               As promised, here’s your free printable activity pack, created with intention,
