@@ -3,34 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  let email: string | undefined;
-
-  try {
-    const body =
-      typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-    email = body?.email;
-  } catch {
-    return res.status(400).json({ error: "Invalid request body" });
-  }
-
-  if (!email) {
-    return res.status(400).json({ error: "Email is required" });
-  }
-
-  try {
-    await resend.emails.send({
-      from: "Amberwood House Press <dream@amberwoodhousepress.com>",
-      to: email,
-      subject: "✨ Your Activity Pack Is Ready ✨",
-      html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+const EMAIL_HTML = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" lang="en">
   <head>
     <meta content="width=device-width" name="viewport" />
@@ -99,7 +72,30 @@ export default async function handler(
       </tbody>
     </table>
   </body>
-</html>`
+</html>`;
+
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+  const email = body?.email;
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  try {
+    await resend.emails.send({
+      from: "Amberwood House Press <dream@amberwoodhousepress.com>",
+      to: email,
+      subject: "Your Activity Pack Is Ready",
+      html: EMAIL_HTML,
+      text: "Your activity pack is ready. Download it from the link in this email."
     });
 
     return res.status(200).json({ success: true });
